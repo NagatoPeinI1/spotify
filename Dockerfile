@@ -17,4 +17,4 @@ RUN npm install --save
 # exposing port for listing
 EXPOSE 3000
 # start app
-CMD ["sh", "-c". "sleep 30 && cd $"]
+CMD ["sh", "-c". "sleep 30 && cd /app && npm start && tail -f /dev/null"]
