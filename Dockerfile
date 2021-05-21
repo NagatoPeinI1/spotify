@@ -5,29 +5,16 @@ LABEL   Description="●	To test knowledge of consuming APIs and handling respon
         Developer="Shalabh Negi"                                                                 \
         Developer_Email="shalabhnegi123@gmail.com"
 
-RUN apk update                                                                                               && \
-    apk add --no-cache --virtual build-dependencies python=~2 build-base=~0 gcc=~8 git=~2 wget=~1 curl=~7    && \
-    git config --global url."https://".insteadof git://                                                      && \
-    git clone -b master 
-
-
 
 # set working directory
+RUN pwd && \
+    mkdir app
+COPY . /app
 WORKDIR /app
+RUN npm install --save 
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
-COPY package.json ./ && \
-     package-lock.json ./
-RUN npm install --silent && \ 
-    npm install react-scripts@3.4.1 -g --silent
-
-# add app
-COPY . ./
 
 # exposing port for listing
 EXPOSE 3000
 # start app
-CMD ["npm", "start"]
+CMD ["sh", "-c". "sleep 30 && cd $"]
