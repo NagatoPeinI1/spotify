@@ -11,7 +11,9 @@ RUN pwd && \
     mkdir app
 COPY . /app
 WORKDIR /app
-RUN npm install --save 
+RUN pwd && \
+    ls  && \
+    npm install --save 
 
 
 # exposing port for listing
